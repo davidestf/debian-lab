@@ -1,0 +1,39 @@
+apt-get install -y build-essential libpcre3 libpcre3-dev libssl-dev git zlib1g-dev
+
+git clone git://github.com/arut/nginx-rtmp-module.git
+wget http://nginx.org/download/nginx-1.19.8.tar.gz
+
+tar xzf nginx-1.19.8.tar.gz
+cd nginx-1.19.8
+
+./configure --with-http_ssl_module --add-module=/root/nginx-rtmp-module
+
+make
+make install
+ 
+/usr/local/nginx/sbin/nginx 
+/usr/local/nginx/sbin/nginx -s stop
+ 
+
+mkdir  /mnt/rtmp
+
+nano /usr/local/nginx/conf/nginx.conf
+
+
+rtmp {
+
+    server {
+
+        listen 1935;
+
+        chunk_size 8192;
+
+        application vod {
+
+            play /mnt/rtmp;
+
+        }
+
+    }
+
+}
