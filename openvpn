@@ -1,0 +1,21 @@
+apt update && apt upgrade
+
+apt-get install -y \
+curl \
+git \
+net-tools \
+ufw
+
+ufw default deny incoming
+ufw default allow outgoing
+
+ufw allow from IPv4 to any port 22
+ufw enable
+
+
+wget -qO - https://as-repository.openvpn.net/as-repo-public.gpg | apt-key add -
+echo "deb http://as-repository.openvpn.net/as/debian buster main">/etc/apt/sources.list.d/openvpn-as-repo.list
+
+apt update && apt -y install openvpn-as
+
+passwd openvpn
