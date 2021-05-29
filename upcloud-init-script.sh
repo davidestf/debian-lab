@@ -53,6 +53,7 @@ perl -pi -e "s/robbyrussell/spaceship/g" ~/.zshrc
 
 chsh -s $(which zsh)
 
+source ~/.zshrc
 
 git clone https://github.com/denysdovhan/spaceship-prompt.git 
 
