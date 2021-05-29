@@ -41,3 +41,4 @@ server {
 }
 END
 
+systemctl restart nginx.service 
