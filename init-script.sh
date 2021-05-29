@@ -10,7 +10,7 @@ apt-get install -y \
 curl \
 dnsutils \
 git \
-nginix \
+nginx \
 net-tools \
 ufw 
 
