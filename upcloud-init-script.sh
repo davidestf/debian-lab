@@ -19,6 +19,8 @@ ufw default deny incoming
 ufw default allow outgoing
 
 ufw allow ssh/tcp
+# or 
+# ufw allow from 0.0.0.0 to any port 22
 ufw allow http/tcp
 ufw allow https/tcp
 
