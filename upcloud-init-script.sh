@@ -1,9 +1,8 @@
 #!/bin/bash
 
+export DEBIAN_FRONTEND=noninteractive
 
 HOSTNAME=$(hostname)
-
-export DEBIAN_FRONTEND=noninteractive
 
 apt-get install -y \
 curl \
@@ -47,19 +46,19 @@ END
 systemctl restart nginx.service 
 
 git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+
+perl -pi -e "s/robbyrussell/spaceship/g" ~/.zshrc
+
 chsh -s $(which zsh)
 
 
-perl -pi -e "s/robbyrussell/spaceship/g" .zshrc 
+git clone https://github.com/denysdovhan/spaceship-prompt.git 
 
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" 
-ln -sf "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+mv  ~/spaceship-prompt ~/.oh-my-zsh/themes/spaceship-prompt
 
-source ~/.zshrc
-
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" 
-ln -sf "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+ln -sf ~/.oh-my-zsh/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/themes/spaceship.zsh-theme
 
 source ~/.zshrc
 
