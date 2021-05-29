@@ -45,15 +45,15 @@ END
 
 systemctl restart nginx.service 
 
-git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh && \
+git clone https://github.com/denysdovhan/spaceship-prompt.git ~/.oh-my-zsh/themes/spaceship-prompt
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
-#perl -pi -e "s/robbyrussell/spaceship/g" ~/.zshrc
+perl -pi -e "s/robbyrussell/spaceship/g" ~/.zshrc
 
 chsh -s $(which zsh)
 
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-ln -sf "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+ln -sf ~/.oh-my-zsh/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/themes/spaceship.zsh-theme
 
 source ~/.zshrc
 
