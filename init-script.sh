@@ -25,7 +25,13 @@ ufw enable
 
 rm /var/www/html/index.nginx-debian.html
 rm /etc/nginx/sites-enabled/default
-touch /var/www/html/index.html
+
+cat <<END >/var/www/html/index.html
+
+NO ACCESS ${HOSTNAME}
+
+END
+
 
 cat <<END >/etc/nginx/sites-enabled/default
 server {
