@@ -1,3 +1,3 @@
 # debian-lab
 
-Collections of Server configuration 
+Collections of Servers configurations
