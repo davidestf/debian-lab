@@ -8,7 +8,7 @@ apt update && apt upgrade
 tar -xvf latest.tar.gz
 curl -O https://wordpress.org/latest.tar.gz
 tar -xvf latest.tar.gz
-chown -R www-data:www-data /var/www/wordpress
+chown -R www-data:www-data /var/www/wordpress/*
 chmod -R 755 /var/www/wordpress
 find /var/www/wordpress/ -type d -exec chmod 750 {} \;
 find /var/www/wordpress/ -type d -exec chmod 640 {} \;
