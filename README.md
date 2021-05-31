@@ -1,3 +1,3 @@
 # debian-lab
 
-Collections of Servers configurations
+Collections of commands ,scripts and notes of Servers configurations
