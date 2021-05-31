@@ -1,0 +1,24 @@
+apt -y install lsb-release apt-transport-https ca-certificates
+wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg\
+echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
+apt install php8.0-fpm php8.0-gd php8.0-mysql
+
+apt update && apt upgrade
+
+tar -xvf latest.tar.gz
+curl -O https://wordpress.org/latest.tar.gz
+tar -xvf latest.tar.gz
+chown -R www-data:www-data /var/www/wordpress
+chmod -R 755 /var/www/wordpress
+find /var/www/wordpress/ -type d -exec chmod 750 {} \;
+find /var/www/wordpress/ -type d -exec chmod 640 {} \;
+cd wordpress
+mv wp-config-sample.php wp-config.php
+
+#curl -s https://api.wordpress.org/secret-key/1.1/salt/
+#nano /etc/nginx/sites-enabled/default
+
+
+
+
+
