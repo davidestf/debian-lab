@@ -4,9 +4,6 @@ export DEBIAN_FRONTEND=noninteractive
 
 HOSTNAME=$(hostname)
 
-# Disabling ICMP
-iptables -A INPUT -p icmp --icmp-type echo-request -j REJECT
-
 # Install software
 apt-get install -y \
 curl \
@@ -135,6 +132,7 @@ server {
         index index.html index.htm index.nginx-debian.html;
         server_name ${HOSTNAME};
 }
+
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
@@ -144,6 +142,11 @@ server {
     # Add index.php to the list if you are using PHP
     index index.html index.htm index.nginx-debian.html;
     server_name ${HOSTNAME};
+    sub_filter_once off;
+END
+
+cat  <<\EOF >>/etc/nginx/sites-enabled/default
+
     sub_filter_once off;
     sub_filter 'server_hostname' '$hostname';
     sub_filter 'server_address'  '$server_addr:$server_port';
@@ -156,7 +159,7 @@ server {
     sub_filter 'document_root'   '$document_root';
     sub_filter 'proxied_for_ip'  '$http_x_forwarded_for';
 }
-END
+EOF
 
 cat <<END >/etc/nginx/snippets/self-signed.conf
 ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
