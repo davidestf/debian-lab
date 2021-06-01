@@ -142,11 +142,10 @@ server {
     # Add index.php to the list if you are using PHP
     index index.html index.htm index.nginx-debian.html;
     server_name ${HOSTNAME};
-    sub_filter_once off;
+}
 END
 
 cat  <<\EOF >>/etc/nginx/sites-enabled/default
-
     sub_filter_once off;
     sub_filter 'server_hostname' '$hostname';
     sub_filter 'server_address'  '$server_addr:$server_port';
