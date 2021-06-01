@@ -34,7 +34,7 @@ rm /var/www/html/index.nginx-debian.html
 rm /etc/nginx/sites-enabled/default
 
 # Self-SSL
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+openssl req -new -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 openssl dhparam -out /etc/nginx/dhparam.pem 4096
 
 cat <<END >/var/www/html/index.html
@@ -95,10 +95,7 @@ cat <<END >/var/www/html/index.html
                 font: 12px Courier;
             }
         </style>
-
     </head>
-
-    <body onload="checkRefresh();">
         <img alt="Fixerupper Logo" src="https://06a7f2c2-5c56-40d7-aded-6455af08391b.es-mad1.upcloudobjects.com/project001/fixerupper/fixerupperlogo.png"/>
         <div class="info">
             <p><span>Server name:</span> <span>server_hostname</span></p>
@@ -108,9 +105,7 @@ cat <<END >/var/www/html/index.html
             <p class="smaller"><span>Doc Root:</span> <span>document_root</span></p>
             <p class="smaller"><span>Date:</span> <span>server_date</span></p>
             <p class="smaller"><span>Client IP:</span> <span>proxied_for_ip</span></p>
-
         </div>
-
         <div id="footer">
             <div id="center" align="center">
                 Request ID: request_id<br/>
@@ -119,7 +114,6 @@ cat <<END >/var/www/html/index.html
         </div>
     </body>
 </html>
-
 END
 
 
@@ -132,7 +126,6 @@ server {
         index index.html index.htm index.nginx-debian.html;
         server_name ${HOSTNAME};
 }
-
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
