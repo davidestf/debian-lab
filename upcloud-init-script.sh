@@ -36,12 +36,16 @@ ufw enable
 rm /var/www/html/index.nginx-debian.html
 rm /etc/nginx/sites-enabled/default
 
+# Self-SSL
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+openssl dhparam -out /etc/nginx/dhparam.pem 4096
+
 cat <<END >/var/www/html/index.html
 <!DOCTYPE html>
 <html>
     <head>
         <title>Hello World - App X <!-- Replace 'X' with '1' or '2' as appropriate --></title>
-        <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAGPElEQVR42u1bDUyUdRj/iwpolMlcbZqtXFnNsuSCez/OIMg1V7SFONuaU8P1MWy1lcPUyhK1uVbKcXfvy6GikTGKCmpEyoejJipouUBcgsinhwUKKKJ8PD3vnzsxuLv35Q644+Ue9mwH3P3f5/d7n6/3/3+OEJ/4xCc+8YQYtQuJwB0kIp+JrzUTB7iJuweBf4baTlJ5oCqw11C/JHp+tnqBb1ngT4z8Wg$
+        <link href="https://06a7f2c2-5c56-40d7-aded-6455af08391b.es-mad1.upcloudobjects.com/project001/fixerupper/fixerupperlogo.png"" rel="icon" type="image/png" />
         <style>
             body {
                 margin: 0px;
@@ -95,22 +99,30 @@ cat <<END >/var/www/html/index.html
             }
         </style>
 
-
     </head>
 
     <body onload="checkRefresh();">
-        <img alt="NGINX Logo" src="https://06a7f2c2-5c56-40d7-aded-6455af08391b.es-mad1.upcloudobjects.com/project001/fixerupper/fixerupperlogo-min.png"/>
+        <img alt="Fixerupper Logo" src="https://06a7f2c2-5c56-40d7-aded-6455af08391b.es-mad1.upcloudobjects.com/project001/fixerupper/fixerupperlogo.png"/>
         <div class="info">
             <p><span>Server name:</span> <span>server_hostname</span></p>
             <p><span>Server address:</span> <span>server_address</span></p>
             <p class="smaller"><span>User Agent:</span> <span>client_browser</span></p>
             <p class="smaller"><span>URI:</span> <span>server_url</span></p>
+            <p class="smaller"><span>Doc Root:</span> <span>document_root</span></p>
             <p class="smaller"><span>Date:</span> <span>server_date</span></p>
             <p class="smaller"><span>Client IP:</span> <span>proxied_for_ip</span></p>
 
-</div>
+        </div>
+
+        <div id="footer">
+            <div id="center" align="center">
+                Request ID: request_id<br/>
+                © fixerupper.me
+            </div>
+        </div>
     </body>
 </html>
+
 END
 
 
@@ -122,7 +134,18 @@ server {
         # Add index.php to the list if you are using PHP
         index index.html index.htm index.nginx-debian.html;
         server_name ${HOSTNAME};
-        sub_filter_once off;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    include snippets/self-signed.conf;
+    include snippets/ssl-params.conf;
+    root /var/www/html;
+    # Add index.php to the list if you are using PHP
+    index index.html index.htm index.nginx-debian.html;
+    server_name ${HOSTNAME};
+    sub_filter_once off;
         sub_filter 'server_hostname' '$hostname';
         sub_filter 'server_address'  '$server_addr:$server_port';
         sub_filter 'server_url'      '$request_uri';
@@ -132,6 +155,32 @@ server {
         sub_filter 'request_id'      '$request_id';
         sub_filter 'proxied_for_ip'  '$http_x_forwarded_for';
 }
+END
+
+cat <<END >/etc/nginx/snippets/self-signed.conf
+ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+END
+
+cat <<END >/etc/nginx/snippets/ssl-params.conf
+ssl_protocols TLSv1.2;
+ssl_prefer_server_ciphers on;
+ssl_dhparam /etc/nginx/dhparam.pem;
+ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384;
+ssl_ecdh_curve secp384r1; # Requires nginx >= 1.1.0
+ssl_session_timeout  10m;
+ssl_session_cache shared:SSL:10m;
+ssl_session_tickets off; # Requires nginx >= 1.5.9
+ssl_stapling on; # Requires nginx >= 1.3.7
+ssl_stapling_verify on; # Requires nginx => 1.3.7
+resolver 8.8.8.8 8.8.4.4 valid=300s;
+resolver_timeout 5s;
+# Disable strict transport security for now. You can uncomment the following
+# line if you understand the implications.
+# add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload";
+add_header X-Frame-Options DENY;
+add_header X-Content-Type-Options nosniff;
+add_header X-XSS-Protection "1; mode=block";
 END
 
 systemctl restart nginx.service 
@@ -149,5 +198,8 @@ chsh -s $(which zsh)
 ln -sf ~/.oh-my-zsh/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/themes/spaceship.zsh-theme
 
 source ~/.zshrc
+
+# Disabling ICMP
+iptables -A INPUT -p icmp --icmp-type echo-request -j REJECT
 
 reboot
