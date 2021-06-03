@@ -34,7 +34,11 @@ rm /var/www/html/index.nginx-debian.html
 rm /etc/nginx/sites-enabled/default
 
 # Self-SSL
-openssl req -new -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+openssl req -new -x509 -days 365 -nodes -newkey rsa:2048  \
+  -out /etc/ssl/certs/nginx-selfsigned.crt \
+  -keyout /etc/ssl/private/nginx-selfsigned.key \
+  -subj "/C=uk/ST=London/London/O=IT/CN=${HOSTNAME}"
+  
 openssl dhparam -out /etc/nginx/dhparam.pem 4096
 
 cat <<END >/var/www/html/index.html
