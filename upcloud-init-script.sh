@@ -4,6 +4,9 @@ export DEBIAN_FRONTEND=noninteractive
 
 HOSTNAME=$(hostname)
 
+# System Updates
+apt update && apt upgrade
+
 # Install software
 apt-get install -y \
 curl \
@@ -12,10 +15,8 @@ git \
 nginx \
 net-tools \
 ufw \
+python3-pip \
 zsh 
-
-# System Updates
-apt update && apt upgrade
 
 # Configure firewall 
 ufw default deny incoming
