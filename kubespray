@@ -1,0 +1,74 @@
+git clone https://github.com/kubernetes-sigs/kubespray.git
+
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py --user
+
+cp -rfp inventory/sample inventory/mycluster
+master0   ansible_host= ip=
+host1   ansible_host= ip=
+host2   ansible_host= ip=
+[kube-master]
+master0
+[etcd]
+master0
+[kube-node]
+host1
+host2
+
+nano /etc/hosts
+ master0
+ host1
+ host2
+ 
+pip3 install -r requirements.txt
+
+nano inventory/mycluster/group_vars/k8s-cluster/k8s-cluster.yml
+container_manager: containerd
+etcd_deployment_type: host
+kubelet_deployment_type: host
+
+ansible-playbook -i inventory/mycluster/inventory.ini --become \
+--user=tech --become-user=root cluster.yml
+
+#master
+kubectl cluster-info
+kubectl get nodes
+
+#nginix
+wget https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.43.0/deploy/static/provider/baremetal/deploy.yaml
+kubectl apply -f deploy.yaml
+
+kubectl get pods -n ingress-nginx
+
+wget https://github.com/istio/istio/raw/master/samples/httpbin/httpbin.yaml
+kubectl apply -f httpbin.yaml
+
+nano httpbin-ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: httpbin-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: master.computingforgeeks.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: httpbin
+                port:
+                  number: 8000
+                  
+                  
+                  
+kubectl apply -f httpbin-ingress.yaml
+kubectl get ing
+
+kubectl get svc -n ingress-nginx
+
+      
