@@ -1,0 +1,48 @@
+apt-get install -y apt-transport-https
+apt-get install -y software-properties-common wget
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/g$
+apt-get install grafana
+systemctl daemon-reload
+systemctl start grafana-server
+systemctl status grafana-server
+systemctl enable grafana-server
+
+
+wget https://github.com/prometheus/prometheus/releases/download/v2.11.2/prometheus-2.11.2.linux-amd$
+tar xvzf prometheus-2.11.2.linux-amd64.tar.gz
+useradd -rs /bin/false prometheus
+cd Prometheus/prometheus-2.11.2.linux-amd64/
+cp prometheus promtool /usr/local/bin
+chown prometheus:prometheus /usr/local/bin/prometheus
+mkdir /etc/prometheus
+cp -R consoles/ console_libraries/ prometheus.yml /etc/prometheus
+mkdir /var/lib/prometheus
+chown -R prometheus:prometheus /var/lib/prometheus /etc/prometheus/*
+
+cd /etc/systemd/system
+nano prometheus.service
+
+[Unit]
+Description=Prometheus
+Wants=network-online.target
+After=network-online.target
+[Service]
+Type=simple
+User=prometheus
+Group=prometheus
+ExecStart=/usr/local/bin/prometheus \
+  --config.file /etc/prometheus/prometheus.yml \
+  --storage.tsdb.path /var/lib/prometheus/ \
+  --web.console.templates=/etc/prometheus/consoles \
+  --web.console.libraries=/etc/prometheus/console_libraries
+#Restart=always
+[Install]
+WantedBy=multi-user.target
+
+
+
+systemctl enable prometheus
+systemctl start prometheus
+systemctl status prometheus
+
