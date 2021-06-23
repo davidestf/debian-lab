@@ -1,0 +1,8 @@
+apt install s3fs
+echo "ACCESS_KEY:SECRET_KEY" | sudo tee /etc/passwd-s3fs
+chmod 600 /etc/passwd-s3fs
+mkdir /mnt/my-object-storage
+s3fs {bucketname} {/mountpoint/dir/} -o passwd_file=/etc/passwd-s3fs -o allow_other -o url=https://{private-network-endpoint}
+s3fs#{bucketname} /mnt/my-object-storage fuse _netdev,allow_other,passwd_file=/etc/passwd-s3fs,url=https://my-object-storage-internal.sg-sin1.upcloudobjects.com/ 0 0
+
+
