@@ -11,9 +11,10 @@ apt update && apt upgrade
 apt-get install -y \
 curl \
 dnsutils \
+arping \
 git \
-nginx \
 net-tools \
+nginx \
 ufw \
 python3-pip \
 zsh 
