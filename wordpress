@@ -50,3 +50,17 @@ server {
 
 
 
+ server {
+            listen       80;
+            root /var/www/wordpress;
+            index index.html index.htm index.php;
+            server_name  localhost;
+
+ location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/run/php/php8.0-fpm.sock;
+                fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
+#                 fastcgi_index index.php;
+                 include fastcgi_params;
+}
+
