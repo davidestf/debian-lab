@@ -131,6 +131,18 @@ server {
         # Add index.php to the list if you are using PHP
         index index.html index.htm index.nginx-debian.html;
         server_name ${HOSTNAME};
+
+ sub_filter_once off;
+    sub_filter 'server_hostname' '$hostname';
+    sub_filter 'server_address'  '$server_addr:$server_port';
+    sub_filter 'server_url'      '$request_uri';
+    sub_filter 'remote_addr'     '$remote_addr:$remote_port';
+    sub_filter 'server_date'     '$time_local';
+    sub_filter 'client_browser'  '$http_user_agent';
+    sub_filter 'request_id'      '$request_id';
+    #sub_filter 'nginx_version'   '$nginx_version';
+    #sub_filter 'document_root'   '$document_root';
+    sub_filter 'proxied_for_ip'  '$http_x_forwarded_for';
 }
 server {
     listen 443 ssl;
@@ -152,8 +164,8 @@ cat  <<\EOF >>/etc/nginx/sites-enabled/default
     sub_filter 'server_date'     '$time_local';
     sub_filter 'client_browser'  '$http_user_agent';
     sub_filter 'request_id'      '$request_id';
-    sub_filter 'nginx_version'   '$nginx_version';
-    sub_filter 'document_root'   '$document_root';
+   #sub_filter 'nginx_version'   '$nginx_version';
+   #sub_filter 'document_root'   '$document_root';
     sub_filter 'proxied_for_ip'  '$http_x_forwarded_for';
 }
 EOF
