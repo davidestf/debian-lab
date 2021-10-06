@@ -47,7 +47,7 @@ cat <<END >/var/www/html/index.html
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hello World - App X <!-- Replace 'X' with '1' or '2' as appropriate --></title>
+        <title>Hello World - App</title>
         <link href="https://06a7f2c2-5c56-40d7-aded-6455af08391b.es-mad1.upcloudobjects.com/project001/fixerupper/fixerupperlogo.png"" rel="icon" type="image/png" />
         <style>
             body {
