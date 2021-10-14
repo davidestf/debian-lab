@@ -35,3 +35,10 @@ service mysql stop
 mysqld_safe --skip-grant-tables &
 mysql
 UPDATE mysql.user SET Password=PASSWORD('new-password') WHERE User='root';
+
+
+
+-mycli
+ssh-tunnel
+ssh -Nf root@serverip  -L 3306:localhost:3306
+mycli -h localhost -u user -D myDB -p 3306
