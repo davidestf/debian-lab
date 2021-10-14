@@ -1,1 +1,34 @@
+mysql -u root -p 
+show databases;
+select host, user, password from mysql.user;
 
+
+mysqladmin -u root password mypasswd
+
+
+CREATE DATABASE 'myDB';
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON myDB . * TO 'user'@'localhost';
+GRANT ALL PRIVILEGES ON myDB . * TO 'user'@'localhost' IDENTIFIED BY 'password';
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
+FLUSH PRIVILEGES;
+
+
+
+DROP DATABASE blog;
+DROP USER 'user'@'localhost';
+ 
+import to an existing database
+mysql -u [username] -h [host] -p [password] [database_name] < SQL file to import
+
+Export and zip an existing database
+mysqldump -u [user] -h [host] -p [db_name] | gzip > [filename_to_compress.sql.gz] 
+
+
+
+reset root password
+service mysqld stop
+service mysql stop
+mysqld_safe --skip-grant-tables &
+mysql
+UPDATE mysql.user SET Password=PASSWORD('new-password') WHERE User='root';
