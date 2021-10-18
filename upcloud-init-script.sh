@@ -31,6 +31,9 @@ ufw allow https/tcp
 
 ufw enable
 
+# Disabling ICMP
+iptables -A INPUT -p icmp --icmp-type echo-request -j REJECT
+
 # Configure WebServer
 rm /var/www/html/index.nginx-debian.html
 rm /etc/nginx/sites-enabled/default
@@ -201,8 +204,5 @@ chsh -s $(which zsh)
 ln -sf ~/.oh-my-zsh/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/themes/spaceship.zsh-theme
 
 source ~/.zshrc
-
-# Disabling ICMP
-iptables -A INPUT -p icmp --icmp-type echo-request -j REJECT
 
 reboot
