@@ -48,7 +48,7 @@ cat <<END >/var/www/html/index.html
 <html>
     <head>
         <title>Hello World - App</title>
-        <link href="https://06a7f2c2-5c56-40d7-aded-6455af08391b.es-mad1.upcloudobjects.com/project001/fixerupper/fixerupperlogo.png"" rel="icon" type="image/png" />
+        <link href="https://drive.fixerupper.me/website/fixerupperlogo.png"" rel="icon" type="image/png" />
         <style>
             body {
                 margin: 0px;
@@ -102,7 +102,7 @@ cat <<END >/var/www/html/index.html
             }
         </style>
     </head>
-        <img alt="Fixerupper Logo" src="https://06a7f2c2-5c56-40d7-aded-6455af08391b.es-mad1.upcloudobjects.com/project001/fixerupper/fixerupperlogo.png"/>
+        <img alt="Fixerupper Logo" src="https://drive.fixerupper.me/website/fixerupperlogo.png"/>
         <div class="info">
             <p><span>Server name:</span> <span>server_hostname</span></p>
             <p><span>Server address:</span> <span>server_address</span></p>
