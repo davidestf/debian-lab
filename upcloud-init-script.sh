@@ -32,7 +32,11 @@ ufw allow https/tcp
 ufw enable
 
 # Disabling ICMP
-iptables -A INPUT -p icmp --icmp-type echo-request -j REJECT
+#iptables -A INPUT -p icmp --icmp-type echo-request -j REJECT
+cat <<END >/etc/sysctl.conf
+net.ipv4.icmp_echo_ignore_all=1
+END
+sysctl -p
 
 # Configure WebServer
 rm /var/www/html/index.nginx-debian.html
