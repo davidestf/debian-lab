@@ -1,7 +1,7 @@
 apt update && apt upgrade
 tcpdump
-nmap
+nmap  netcat
  whatweb
- netdiscover  arp-scan
+ netdiscover  arp-scan dnsrecon
 apt install hydra  wfuzz
 wget https://github.com/danielmiessler/SecLists/blob/03b4d2c22c9f0bc0a1f5093dbbfe57464f0d9bf8/Passwords/Leaked-Databases/rockyou-20.txt
