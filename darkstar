@@ -9,6 +9,8 @@ curl \
 dnsutils \
 arping \
 git \
+zsh \
+rake \
 net-tools \
 nginx \
 ufw \
