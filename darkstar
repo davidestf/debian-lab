@@ -28,6 +28,7 @@ hydra  \
 wfuzz
 
 git clone https://github.com/christophetd/censys-subdomain-finder.git
+ 
 sh -c "`curl -fsSL https://raw.githubusercontent.com/skwp/dotfiles/master/install.sh `"
 
 wget https://github.com/danielmiessler/SecLists/blob/03b4d2c22c9f0bc0a1f5093dbbfe57464f0d9bf8/Passwords/Leaked-Databases/rockyou-20.txt
