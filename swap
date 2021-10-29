@@ -1,0 +1,20 @@
+
+
+sudo swapon --show
+grep swap /etc/fstab 
+
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo swapon
+
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+sudo nano /etc/sysctl.conf
+vm.swappiness=80
+
+
+#remove 
+sudo swapoff -v /swapfile
+sudo rm /swapfile
