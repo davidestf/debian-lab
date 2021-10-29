@@ -1,0 +1,44 @@
+docker pull $imagename
+docker run -it -d $imagename
+docker container ls --all
+docker exec -it <container id> bash
+docker container rm -f $(docker ps -aq)
+
+docker-compose build
+docker-compose up
+
+docker ps -a
+
+docker stop nginx
+docker run
+
+
+docker build -t myimage .
+docker run -d --name mycontainer -p 80:80 myimage
+
+
+# create image (snapshot) from container filesystem
+docker commit 7ce30191e0f2  mongo
+
+# explore this filesystem using bash (for example)
+docker run -t -i mongo /bin/bash
+
+docker run -d -p 22 mysnapshot /usr/sbin/sshd -D
+
+cleanup volumes
+docker volume rm $(docker volume ls -qf dangling=true)
+
+docker-compose down
+
+Delete all containers 
+
+docker rm -f $(docker ps -a -q)
+
+Delete all volumes 
+
+docker volume rm $(docker volume ls -q)
+
+Restart the containers 
+
+docker-compose up -d
+
