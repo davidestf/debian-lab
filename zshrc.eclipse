@@ -173,5 +173,10 @@ source $ZSH/oh-my-zsh.sh
 
 
 
+#sublime - subl
+echo 'export PATH=$PATH:$HOME/bin' >> ~/.zshrc
+echo "export EDITOR='subl -w'" >> ~/.zshrc
+
+
 
 
