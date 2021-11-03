@@ -23,7 +23,13 @@ SHOW TABLES;
 DESCRIBE table_name;
 mysqlshow -u root -p db_name 
 mysqlshow -u root -p db_name table_name
-SHOW
+
+DROP TABLE table_name;
+DROP TABLE db_name table_name;
+
+#insert/view datas
+DESCRIBE table_name;
+INSERT INTO table_name (1,2) VALUES ('','');
 
 
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
