@@ -1,12 +1,31 @@
 mysql -u root -p 
-show databases;
 select host, user, password from mysql.user;
 
 
+
+
+#create database
+CREATE DATABASE 'db_name';
+SHOW DATABASES;
+SELECT DATABASE();
+USE db_name;
+
+mysqladmin -u root -p create db_name
 mysqladmin -u root password mypasswd
 
+#delete database
+DROP DATABASE db_name;
+mysqladmin -u root -p drop db_name
 
-CREATE DATABASE 'myDB';
+#create table
+CREATE TABLE table_name () INT PRIMARY KEY AUTO_INCREMENT, username 
+SHOW TABLES;
+DESCRIBE table_name;
+mysqlshow -u root -p db_name 
+mysqlshow -u root -p db_name table_name
+SHOW
+
+
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON myDB . * TO 'user'@'localhost';
 GRANT ALL PRIVILEGES ON myDB . * TO 'user'@'localhost' IDENTIFIED BY 'password';
@@ -15,7 +34,7 @@ FLUSH PRIVILEGES;
 
 
 
-DROP DATABASE blog;
+
 DROP USER 'user'@'localhost';
 
 SHOW DATABASES;
