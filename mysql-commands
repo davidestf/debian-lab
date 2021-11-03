@@ -30,6 +30,8 @@ DROP TABLE db_name table_name;
 #insert/view datas
 DESCRIBE table_name;
 INSERT INTO table_name (1,2) VALUES ('','');
+SELECT * FROM table_name;
+DELETE FROM table_name WHERE col = 'value';
 
 
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
