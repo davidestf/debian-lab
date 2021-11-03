@@ -53,6 +53,13 @@ FLUSH PRIVILEGES;
 
 #delete user
 DROP USER 'user'@'localhost';
+REVOKE 
+
+#roles
+CREATE ROLE role;
+GRANT SELECT ON database.* TO role;
+GRANT role TO 'user'@'localhost';
+REVOKE role FROM 'user'@'localhost';
 
 SHOW DATABASES;
 select host, user, password from mysql.user;
