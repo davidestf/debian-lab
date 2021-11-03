@@ -1,9 +1,6 @@
 mysql -u root -p 
 select host, user, password from mysql.user;
 
-
-
-
 #create database
 CREATE DATABASE 'db_name';
 SHOW DATABASES;
@@ -41,16 +38,14 @@ mysqldump -u -p db_name table_name > table_backup.sql
 source databases.sql
 
 
-
+#create users
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON myDB . * TO 'user'@'localhost';
 GRANT ALL PRIVILEGES ON myDB . * TO 'user'@'localhost' IDENTIFIED BY 'password';
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
 FLUSH PRIVILEGES;
 
-
-
-
+#delete user
 DROP USER 'user'@'localhost';
 
 SHOW DATABASES;
@@ -73,6 +68,7 @@ UPDATE mysql.user SET Password=PASSWORD('new-password') WHERE User='root';
 
 #MySQL Backup
 mysqldump -u root -p'xxx' wordpress | gzip -c > /backups/database/$(date +\%Y\%m\%d).sql.gz
+
 crontab -e
 00 01 * * * mysqldump -u root -p'93zcsb43' wordpress | gzip -c > /backups/database/wordpress$(date +\%Y\%m\%d).sql.gz >> /var/log/cronjob2.log 2>&1
 
@@ -82,7 +78,7 @@ grep CRON /var/log/syslog
 mysql -u root –p'password' database_name < /path/to/[database_name].sql
 
 
--mycli
-ssh-tunnel
+#mycli
+#ssh-tunnel
 ssh -Nf root@serverip  -L 3306:localhost:3306
 mycli -h localhost -u user -D myDB -p 3306
