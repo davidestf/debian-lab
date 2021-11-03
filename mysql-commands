@@ -40,9 +40,14 @@ source databases.sql
 
 #create users
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON myDB . * TO 'user'@'localhost';
-GRANT ALL PRIVILEGES ON myDB . * TO 'user'@'localhost' IDENTIFIED BY 'password';
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
+CREATE USER 'user'@'publicIP' IDENTIFIED BY 'password';
+mysql -u -p -h publicIP
+
+GRANT ALL PRIVILEGES ON myDB.* TO 'user'@'localhost';
+GRANT SELECT ON table.name TO 'user'@'localhost';
+
+GRANT ALL PRIVILEGES ON myDB.* TO 'user'@'localhost' IDENTIFIED BY 'password';
+ALTER USER 'user'@'localhost' IDENTIFIED BY 'MyNewPass';
 FLUSH PRIVILEGES;
 
 #delete user
