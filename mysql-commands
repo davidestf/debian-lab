@@ -47,6 +47,7 @@ GRANT ALL PRIVILEGES ON myDB.* TO 'user'@'localhost';
 GRANT SELECT ON table.name TO 'user'@'localhost';
 
 GRANT ALL PRIVILEGES ON myDB.* TO 'user'@'localhost' IDENTIFIED BY 'password';
+SHOW GRANTS FOR 'user'@'localhost'
 ALTER USER 'user'@'localhost' IDENTIFIED BY 'MyNewPass';
 FLUSH PRIVILEGES;
 
