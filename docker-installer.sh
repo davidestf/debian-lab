@@ -1,6 +1,6 @@
-sudo apt-get update && sudo apt full-upgrade -y
+sudo apt update && sudo apt full-upgrade -y
 
-sudo apt-get install \
+sudo apt install \
     apt-transport-https \
     ca-certificates \
     curl \
