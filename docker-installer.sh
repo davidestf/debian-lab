@@ -1,4 +1,4 @@
-apt-get update
+apt update && sudo apt full-upgrade -y
 
 apt-get install \
     apt-transport-https \
