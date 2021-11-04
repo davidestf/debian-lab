@@ -30,8 +30,8 @@ compatibility_level = 2
 
 
 # TLS parameters
-smtpd_tls_cert_file = /etc/letsencrypt/live/mail.fixerupper.me/fullchain.pem
-smtpd_tls_key_file = /etc/letsencrypt/live/mail.fixerupper.me/privkey.pem
+smtpd_tls_cert_file = /etc/letsencrypt/live/mail.$DOMAIN/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/mail$DOMAIN/privkey.pem
 smtp_use_tls=yes
 #smtpd_use_tls=yes
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
@@ -45,14 +45,14 @@ myhostname = mail.fixerupper.me
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 myorigin = /etc/mailname
-mydestination = $myhostname, fixerupper.me, mail.fixerupper.me, localhost.fixerupper.me, localhost
+mydestination = $myhostname, $DOMAIN, mail.$DOMAIN, localhost.$DOMAIN, localhost
 relayhost =
 mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
 inet_protocols = all
-mydomain = fixerupper.me
+mydomain = $DOMAIN
 home_mailbox = Maildir/
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
