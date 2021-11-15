@@ -1,0 +1,3 @@
+iptables -t nat -A PREROUTING -p TCP -d IP --dport 80 -i vmbr0 -j DNAT --to-destination $vmip:80
+iptables -t nat  -A PREROUTING -p TCP -d IP --dport 443 -i vmbr0 -j DNAT --to-destination $vmip:443
+iptables -t nat  -A PREROUTING -p TCP -d IP --dport 22 -i vmbr0 -j DNAT --to-destination $vmip:22
