@@ -19,3 +19,10 @@ echo "deb http://as-repository.openvpn.net/as/debian buster main">/etc/apt/sourc
 apt update && apt -y install openvpn-as
 
 passwd openvpn
+
+
+#userlockoout release
+cd /usr/local/openvpn_as/scripts
+./sacli -k vpn.server.lockout_policy.n_fails -v 10 ConfigPut
+./sacli -k vpn.server.lockout_policy.reset_time -v 300 ConfigPut
+./sacli start
