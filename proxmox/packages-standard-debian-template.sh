@@ -1,7 +1,26 @@
 #!/bin/bash
 
-#standard system utilities packages 
+#add-repository
 
+cat <<END >/etc/apt/source.list
+deb http://deb.debian.org/debian bullseye main  contrib
+deb-src http://deb.debian.org/debian/ bullseye main  contrib
+
+deb http://security.debian.org/debian-security bullseye-security main contrib #non-free
+deb-src http://security.debian.org/debian-security bullseye-security main contrib #non-free
+END
+
+#update
+apt update && apt upgrade
+
+#template polish
+truncate -s 0 /etc/machine-id 
+rm  /var/lib/dbus/machine-id 
+ln -s /etc/machine-id /var/lib/dbus/machine-id
+
+
+
+#standard system utilities packages 
 while read -r p ; do apt-get install -y $p ; done < <(cat << "EOF"
     apt-listchanges
     lsof
@@ -56,3 +75,5 @@ while read -r p ; do apt-get install -y $p ; done < <(cat << "EOF"
 
 EOF
 )
+apt clean
+apt autoremove
