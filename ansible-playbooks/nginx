@@ -1,0 +1,30 @@
+---
+- name: nginx
+  hosts: webserver001
+  become: true
+
+  tasks:
+    - name: Update and upgrade apt packages
+      apt:
+       update_cache: yes
+       upgrade: "yes"   
+   
+   - name: nginx
+      apt: 
+       name: nginx
+       state: present
+
+    - name: Delete content & directory
+      file:
+       state: absent
+       path: "/var/www/html/index.nginx-debian.html"
+
+    - name: "copying the web pages"
+      template:
+       src: "index.html"
+       dest: "/var/www/html/index.html"
+
+    - name: "start nginx"
+      service:
+       name: "nginx"
+       state: started
