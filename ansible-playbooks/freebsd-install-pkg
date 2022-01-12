@@ -5,4 +5,4 @@
   tasks:
       - name: Add packages on FreeBSD
         pkgng:
-            name: bind-tools,curl,git,ca_root_nss,mc,rsync,bash,most,bash-completion,vnstat,htop,wget,curl,nginx
+            name: bind-tools,curl,nano,git,ca_root_nss,mc,rsync,bash,most,bash-completion,vnstat,htop,wget,curl,nginx
