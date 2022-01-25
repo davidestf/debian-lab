@@ -36,7 +36,15 @@ ssl_ciphers=HIGH
 require_ssl_reuse=NO
 pasv_enable=YES
 pasv_min_port=50000
-pasv_max_port=50999" > /etc/vsftpd.conf
+pasv_max_port=50999
+
+
+userlist_enable=YES
+userlist_file=/etc/vsftpd.userlist
+userlist_deny=NO" > /etc/vsftpd.conf
+
+#echo "sammy" | sudo tee -a /etc/vsftpd.userlist
+
 service vsftpd restart
  
 fi
