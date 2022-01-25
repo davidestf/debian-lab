@@ -10,7 +10,7 @@ echo
 if [ "$UPDATE" == "y" ]; then
 echo "listen=YES
 listen_port=21
-local_root=/root
+local_root=/home
 anonymous_enable=NO
 local_enable=YES
 write_enable=YES
