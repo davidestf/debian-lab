@@ -10,4 +10,10 @@ ufw allow ssh/tcp
 ufw allow http/tcp
 ufw allow https/tcp
 
+#deny outbound connection
+ufw deny out to any port 22
+#allow outbound connection
+ufw allow out to any port 80
+
+
 ufw enable
