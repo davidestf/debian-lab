@@ -1,12 +1,13 @@
-
+#install ufw firewall
+apt install ufw
 #
 # Configure firewall 
 ufw default deny incoming
 ufw default allow outgoing
 
-ufw allow ssh/tcp
+#ufw allow ssh/tcp
 # or 
-# ufw allow from 0.0.0.0 to any port 22
+ufw allow from 0.0.0.0 to any port 22
 ufw allow http/tcp
 ufw allow https/tcp
 
@@ -15,5 +16,10 @@ ufw deny out to any port 22
 #allow outbound connection
 ufw allow out to any port 80
 
-
+#add/remove rule
+ufw show numbered
+ufw status numbered
+ufw delete ''N.rule
+ 
+ 
 ufw enable
