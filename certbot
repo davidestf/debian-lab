@@ -3,7 +3,7 @@ certbot certonly --standalone -d mail.example.com
 
 
 
-
+#check expiration Dates of Certificate 
 certbot certificates
 
 sudo certbot renew --dry-run
@@ -14,6 +14,6 @@ certbot renew --cert-name domain1.com --dry-run
 #killing session
 find / -type f -name ".certbot.lock" -exec rm {} \;
 
-#check expiration Dates of Certificate differ
+#check expiration Dates of Certificate 
 echo | openssl s_client -connect example.com:443 -servername example.com 2>/dev/null | openssl x509 -noout -dates
 ls -l /etc/letsencrypt/live/$DOMAIN/cert.pem 
