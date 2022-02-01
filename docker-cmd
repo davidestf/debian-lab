@@ -12,10 +12,8 @@ docker ps -a
 docker stop nginx
 docker run
 
-
 docker build -t myimage .
 docker run -d --name mycontainer -p 80:80 myimage
-
 
 # create image (snapshot) from container filesystem
 docker commit 7ce30191e0f2  mongo
@@ -25,20 +23,17 @@ docker run -t -i mongo /bin/bash
 
 docker run -d -p 22 mysnapshot /usr/sbin/sshd -D
 
-cleanup volumes
+#cleanup volumes
 docker volume rm $(docker volume ls -qf dangling=true)
 
 docker-compose down
 
-Delete all containers 
-
+#Delete all containers 
 docker rm -f $(docker ps -a -q)
 
-Delete all volumes 
-
+#Delete all volumes 
 docker volume rm $(docker volume ls -q)
 
-Restart the containers 
-
+#Restart the containers 
 docker-compose up -d
 
