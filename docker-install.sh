@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/dstf/debian-lab/main/docker-install.sh)"
+
 apt update && apt full-upgrade -y
 
 apt-get install \
