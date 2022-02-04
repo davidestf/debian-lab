@@ -5,3 +5,4 @@ apt-get autoremove
 
 
 
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/dstf/debian-lab/main/system-update.sh)"
