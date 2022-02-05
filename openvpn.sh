@@ -21,7 +21,7 @@ echo "deb http://as-repository.openvpn.net/as/debian buster main">/etc/apt/sourc
 
 apt update && apt -y install openvpn-as
 
-passwd openvpn
+#passwd openvpn
 
 
 #userlockoout release
