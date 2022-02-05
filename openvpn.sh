@@ -5,6 +5,7 @@ apt update && apt upgrade
 apt-get install -y \
 curl \
 git \
+gnupg2 \
 net-tools \
 ufw
 
