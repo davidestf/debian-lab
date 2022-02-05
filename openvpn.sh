@@ -28,3 +28,6 @@ passwd openvpn
 #./sacli -k vpn.server.lockout_policy.n_fails -v 10 ConfigPut
 #./sacli -k vpn.server.lockout_policy.reset_time -v 300 ConfigPut
 #./sacli start
+
+
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/dstf/debian-lab/main/openvpn.sh)"
