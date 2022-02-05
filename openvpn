@@ -1,3 +1,5 @@
+#/bin/bash
+
 apt update && apt upgrade
 
 apt-get install -y \
@@ -22,7 +24,7 @@ passwd openvpn
 
 
 #userlockoout release
-cd /usr/local/openvpn_as/scripts
-./sacli -k vpn.server.lockout_policy.n_fails -v 10 ConfigPut
-./sacli -k vpn.server.lockout_policy.reset_time -v 300 ConfigPut
-./sacli start
+#cd /usr/local/openvpn_as/scripts
+#./sacli -k vpn.server.lockout_policy.n_fails -v 10 ConfigPut
+#./sacli -k vpn.server.lockout_policy.reset_time -v 300 ConfigPut
+#./sacli start
