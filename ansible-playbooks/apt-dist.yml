@@ -1,0 +1,10 @@
+---
+- hosts: "*"
+  remote_user: root
+  tasks:
+    - name: apt
+
+      apt:
+        update_cache: yes
+        upgrade: 'dist'
+      
