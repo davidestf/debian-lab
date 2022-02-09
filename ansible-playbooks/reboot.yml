@@ -1,0 +1,7 @@
+- hosts: "*"
+  remote_user: root
+  become: yes
+  tasks:
+    - name: Reboot machine 
+      reboot:
+        reboot_timeout: 3600
