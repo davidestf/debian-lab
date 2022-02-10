@@ -1,6 +1,7 @@
 ---
 - name: firewall
-  hosts: webserver001
+  hosts:  '*'
+  remote_user: root
   become: true
 
   tasks:
