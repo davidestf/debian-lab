@@ -1,0 +1,23 @@
+---
+- hosts: "*"
+  remote_user: root
+
+  tasks:
+   - name: Install certbot
+
+     apt:
+       name: "{{ packages }}"
+       state: present
+     vars:
+        packages:
+          - certbot
+          - python3-certbot
+          - cron
+
+   - name: Configure Lets Encrypt renew cron job
+     become: true
+     cron:
+       name: Renew Lets Encrypt certificates
+       weekday: 0
+       job: certbot renew
+
