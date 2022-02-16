@@ -20,3 +20,8 @@ sed -i 's/listen 80 default_server;/#listen 80 default_server;/' /etc/nginx/site
 sed -i 's/listen [::]:80 default_server;/#listen [::]:80 default_server;/' /etc/nginx/sites-enabled/default
 systemctl restart zabbix-server zabbix-agent nginx php7.4-fpm
 systemctl enable zabbix-server zabbix-agent nginx php7.4-fpm
+
+
+
+
+# sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/dstf/debian-lab/main/zabbix-server-install.sh)"
