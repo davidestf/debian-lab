@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Script bash to connect a machine to the Zabbix server
+
 cd /tmp
 wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_6.0-1+debian11_all.deb
 dpkg -i zabbix-release_6.0-1+debian11_all.deb
