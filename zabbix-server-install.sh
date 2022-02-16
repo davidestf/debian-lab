@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Script bash to install Zabbix Server 5.4 on Debian 11 Bullseye Mariadb Nginx with php-fpm v7.4
+#Script bash to install Zabbix Server 6 on Debian 11 Mariadb Nginx with php-fpm v7.4
 
 cd /tmp
 wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_6.0-1+debian11_all.deb
