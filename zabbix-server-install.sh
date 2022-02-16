@@ -6,7 +6,8 @@ dpkg -i zabbix-release_6.0-1+debian11_all.deb
 apt update
 apt upgrade -y
 apt install -y zabbix-server-mysql zabbix-frontend-php zabbix-nginx-conf zabbix-sql-scripts zabbix-agent mariadb-server
-dpkg-reconfigure locales
+locale-gen en_US.UTF-8
+#dpkg-reconfigure locales
 echo "Mot de passe de l'utilisateur mysql zabbix"
 read -p "Password for mysql user zabbix:
 " password
