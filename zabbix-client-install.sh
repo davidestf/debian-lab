@@ -10,3 +10,8 @@ read -p "What is Zabbix server address ?
 " host
 sed -i "s/Server=127.0.0.1/Server\=$host/" /etc/zabbix/zabbix_agentd.conf
 systemctl restart zabbix-agent.service
+
+
+
+
+# sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/dstf/debian-lab/main/zabbix-client-install.sh)"
