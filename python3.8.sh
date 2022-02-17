@@ -14,8 +14,8 @@ make altinstall
 
 
 #mkdir ~/python-project && cd ~/python-project
-#python3.8 -m venv my-venv
-#source  my-venv/bin/activate\
+#python3 -m venv venv
+#source  venv/bin/activate\
 #deactivate
 
 
