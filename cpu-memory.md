@@ -27,6 +27,6 @@ ps -o pid,user,%mem,command ax | sort -b -k3 -r
 clear cache
 echo 3 > /proc/sys/vm/drop_caches
 
-# memory overcommit /etc/sysctl.conf
+### memory overcommit /etc/sysctl.conf
 sysctl -w vm.overcommit_memory=2
 sysctl -w vm.overcommit_ratio=100
