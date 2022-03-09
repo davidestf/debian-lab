@@ -1,5 +1,5 @@
-##CPU
-#find which Process is causing High CPU usage
+## CPU
+# find which Process is causing High CPU usage
 ps -eo pcpu,pid,user,args | sort -k1 -r -n | head -10
 
 
@@ -12,7 +12,7 @@ DefaultCPUAccounting = yes
 systemctl daemon-reexec
 
 
-##Memory
+## Memory
 grep -i -r 'out of memory' /var/log/
 
 free -h
@@ -27,6 +27,6 @@ ps -o pid,user,%mem,command ax | sort -b -k3 -r
 clear cache
 echo 3 > /proc/sys/vm/drop_caches
 
-#memory overcommit /etc/sysctl.conf
+# memory overcommit /etc/sysctl.conf
 sysctl -w vm.overcommit_memory=2
 sysctl -w vm.overcommit_ratio=100
