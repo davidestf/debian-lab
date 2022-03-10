@@ -30,3 +30,12 @@ echo 3 > /proc/sys/vm/drop_caches
 ### memory overcommit /etc/sysctl.conf
 sysctl -w vm.overcommit_memory=2
 sysctl -w vm.overcommit_ratio=100
+
+ 
+### check disk space
+
+df -h
+du -hs /var/
+
+
+
