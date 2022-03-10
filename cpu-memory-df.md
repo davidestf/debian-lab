@@ -36,6 +36,6 @@ sysctl -w vm.overcommit_ratio=100
 
 df -h
 du -hs /var/
-
+ls -lh /var/log/mail.log
 
 
