@@ -30,6 +30,12 @@ INSERT INTO table_name (1,2) VALUES ('','');
 SELECT * FROM table_name;
 DELETE FROM table_name WHERE col = 'value';
 
+SHOW COLUMNS FROM my_table;
+SELECT * FROM maillog_maillog WHERE rcpt LIKE '%davide%';
+
+
+
+
 #backup
 mysqldump -u -p --all-databases > full_backup.sq
 mysqldump -u -p --databases db1 db2 > database.sql
