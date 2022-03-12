@@ -21,9 +21,9 @@ mkdir /media/movies
 mkdir /media/tv
 chown -R plex:plex /media/photo/
 chown-R plex:plex /media/movies/
- chown -R plex:plex /media/movies/
-   13  chown -R plex:plex /media/tv
-   14  mkdir /media/photo
+chown -R plex:plex /media/movies/
+chown -R plex:plex /media/tv
+mkdir /media/photo
  
    16   apt install nginx
    17  nano /etc/nginx/conf.d/plexmediaserver.conf
