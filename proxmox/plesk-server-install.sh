@@ -19,14 +19,14 @@ systemctl enable plexmediaserver
 
 mkdir /media/movies
 mkdir /media/tv
+mkdir /media/photo
 chown -R plex:plex /media/photo/
-chown-R plex:plex /media/movies/
 chown -R plex:plex /media/movies/
 chown -R plex:plex /media/tv
-mkdir /media/photo
+
  
-   16   apt install nginx
-   17  nano /etc/nginx/conf.d/plexmediaserver.conf
+apt install nginx
+nano /etc/nginx/conf.d/plexmediaserver.conf
 
 
 #SSH tunnel
