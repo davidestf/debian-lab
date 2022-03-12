@@ -26,7 +26,7 @@ chown -R plex:plex /media/tv
 
  
 apt install nginx
-nano /etc/nginx/conf.d/plexmediaserver.conf
+#nano /etc/nginx/conf.d/plexmediaserver.conf
 
 
 #SSH tunnel
