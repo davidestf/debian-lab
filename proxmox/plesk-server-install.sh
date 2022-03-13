@@ -28,6 +28,8 @@ chown -R plex:plex /media/tv
 apt install nginx
 #nano /etc/nginx/conf.d/plexmediaserver.conf
 
+apt install python3-certbot-nginx -y
+#certbot --nginx --agree-tos --redirect --hsts --staple-ocsp --email you@example.com -d plex.example.com
 
 #SSH tunnel
 #ssh ip.address.of.server -L 8888:localhost:32400
