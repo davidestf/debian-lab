@@ -6,3 +6,7 @@ s3fs {bucketname} {/mountpoint/dir/} -o passwd_file=/etc/passwd-s3fs -o allow_ot
 s3fs #bucketname /mnt/my-object-storage fuse _netdev,allow_other,passwd_file=/etc/passwd-s3fs,url=https://my-object-storage-internal.sg-sin1.upcloudobjects.com/ 0 0
 
 
+
+#s3cmd
+
+s3cmd -c ~/.s3cfg-uk-media put $filename s3://$bucketname
