@@ -23,6 +23,11 @@ less /proc/meminfo
 ps aux
 ps -o pid,user,%mem,command ax | sort -b -k3 -r
 
+cat /proc/meminfo
+cat /proc/meminfo | grep MemTotal
+dmesg | grep Memory 
+dmesg | grep Freeing
+
 
 clear cache
 echo 3 > /proc/sys/vm/drop_caches
