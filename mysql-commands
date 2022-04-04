@@ -1,4 +1,5 @@
 mysql -u root -p 
+mysql -h  -u upadmin -p defaultdb -P 11550
 select host, user, password from mysql.user;
 
 #create database
