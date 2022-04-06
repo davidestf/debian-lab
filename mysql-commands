@@ -98,7 +98,12 @@ grep CRON /var/log/syslog
 mysql -u root –p'password' database_name < /path/to/[database_name].sql
 
 
+
 #mycli
 #ssh-tunnel
 ssh -Nf root@serverip  -L 3306:localhost:3306
 mycli -h localhost -u user -D myDB -p 3306
+
+
+#apt install postgresql postgresql-contrib
+#psql -h $domain -U upadmin -d defaultdb -p 11550
