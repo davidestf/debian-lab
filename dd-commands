@@ -1,2 +1,6 @@
 dd if=/dev/sda | gzip -1 - | ssh user@hostname dd of=image.gz
 dd if=/dev/nvme0n1 | ssh root@$HOST dd of=/root/eclipse.iso
+
+dd if=/dev/vda bs=4M conv=sparse | pv -s 25G | gzip > /mnt/tmp_disk/ubuntu.gz
+dd if=/dev/sda | gzip -1 - | s3cmd put dd of=image.gz  s3://dstf
+
