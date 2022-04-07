@@ -1,0 +1,2 @@
+dd if=/dev/sda | gzip -1 - | ssh user@hostname dd of=image.gz
+dd if=/dev/nvme0n1 | ssh root@$HOST dd of=/root/eclipse.iso
