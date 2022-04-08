@@ -7,6 +7,8 @@ docker container rm -f $(docker ps -aq)
 docker-compose build
 docker-compose up
 
+# find ID of your running container:
+docker ps
 docker ps -a
 
 docker stop nginx
