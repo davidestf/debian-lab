@@ -9,3 +9,5 @@ dmesg | more
 dmesg | grep -i error
 dmesg | grep -i kernel
 dmesg | grep -i fail
+
+dmesg -T | tail -20 | head -6
