@@ -104,6 +104,114 @@ mysql -u root –p'password' database_name < /path/to/[database_name].sql
 ssh -Nf root@serverip  -L 3306:localhost:3306
 mycli -h localhost -u user -D myDB -p 3306
 
+mysql -u root -p 
+mysql -h  -u upadmin -p defaultdb -P 11550
+select host, user, password from mysql.user;
 
+#create database
+CREATE DATABASE 'db_name';
+SHOW DATABASES;
+SELECT DATABASE();
+USE db_name;
+
+mysqladmin -u root -p create db_name
+mysqladmin -u root password mypasswd
+
+#delete database
+DROP DATABASE db_name;
+mysqladmin -u root -p drop db_name
+
+#create table
+CREATE TABLE table_name () INT PRIMARY KEY AUTO_INCREMENT, username 
+SHOW TABLES; SHOW TABLES FROM;
+DESCRIBE table_name;
+mysqlshow -u root -p db_name 
+mysqlshow -u root -p db_name table_name
+
+DROP TABLE table_name;
+DROP TABLE db_name table_name;
+
+#insert/view datas
+DESCRIBE table_name;
+INSERT INTO table_name (1,2) VALUES ('','');
+SELECT * FROM table_name;
+DELETE FROM table_name WHERE col = 'value';
+
+SHOW COLUMNS FROM my_table;
+SELECT * FROM maillog_maillog WHERE rcpt LIKE '%davide%';
+
+
+
+
+#backup
+mysqldump -u -p --all-databases > full_backup.sq
+mysqldump -u -p --databases db1 db2 > database.sql
+mysqldump -u -p db_name table_name > table_backup.sql
+#restore
+source databases.sql
+
+
+#create users
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
+CREATE USER 'user'@'publicIP' IDENTIFIED BY 'password';
+mysql -u -p -h publicIP
+
+GRANT ALL PRIVILEGES ON myDB.* TO 'user'@'localhost';
+GRANT SELECT ON table.name TO 'user'@'localhost';
+
+GRANT ALL PRIVILEGES ON myDB.* TO 'user'@'localhost' IDENTIFIED BY 'password';
+SHOW GRANTS FOR 'user'@'localhost'
+ALTER USER 'user'@'localhost' IDENTIFIED BY 'MyNewPass';
+FLUSH PRIVILEGES;
+
+#delete user
+DROP USER 'user'@'localhost';
+REVOKE 
+
+#roles
+CREATE ROLE role;
+GRANT SELECT ON database.* TO role;
+GRANT role TO 'user'@'localhost';
+REVOKE role FROM 'user'@'localhost';
+
+SHOW DATABASES;
+select host, user, password from mysql.user;
+ 
+import to an existing database
+mysql -u [username] -h [host] -p [password] [database_name] < SQL file to import
+
+Export and zip an existing database
+mysqldump -u [user] -h [host] -p [db_name] | gzip > [filename_to_compress.sql.gz] 
+
+
+
+reset root password
+service mysqld stop
+service mysql stop
+mysqld_safe --skip-grant-tables &
+mysql
+UPDATE mysql.user SET Password=PASSWORD('new-password') WHERE User='root';
+
+#MySQL Backup
+mysqldump -u root -p'xxx' wordpress | gzip -c > /backups/database/$(date +\%Y\%m\%d).sql.gz
+
+crontab -e
+00 01 * * * mysqldump -u root -p'93zcsb43' wordpress | gzip -c > /backups/database/wordpress$(date +\%Y\%m\%d).sql.gz >> /var/log/cronjob2.log 2>&1
+
+grep CRON /var/log/syslog
+
+#Restore
+mysql -u root –p'password' database_name < /path/to/[database_name].sql
+
+
+
+#mycli
+#ssh-tunnel
+ssh -Nf root@serverip  -L 3306:localhost:3306
+mycli -h localhost -u user -D myDB -p 3306
+
+#apt install postgresql-client
+#apt install postgresql postgresql-contrib
+#psql -h $domain -U upadmin -d defaultdb -p 11550
 #apt install postgresql postgresql-contrib
 #psql -h $domain -U upadmin -d defaultdb -p 11550
