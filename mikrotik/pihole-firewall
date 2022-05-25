@@ -1,0 +1,8 @@
+
+
+add chain=dstnat action=dst-nat to-addresses=192.168.88.3 protocol=udp src-address=!192.168.88.3 dst-address=!192.168.88.3 dst-port=53
+add chain=dstnat action=dst-nat to-addresses=192.168.88.3 protocol=tcp src-address=!192.168.88.3 dst-address=!192.168.88.3 dst-port=53
+
+
+add chain=srcnat action=masquerade protocol=udp src-address=192.168.88.1 dst-address=192.168.88.3 dst-port=53
+add chain=srcnat action=masquerade protocol=tcp src-address=192.168.88.1 dst-address=192.168.88.3 dst-port=53
