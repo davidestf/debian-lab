@@ -10,6 +10,9 @@ curl -sSL https://install.pi-hole.net | bash
 #blocklist source list
 #pihole -g
 
+#reconfigure
+#pihole -r 
+
 
 
 root@raspberrypi:/home/pi# cat /etc/pihole/adlists.list
