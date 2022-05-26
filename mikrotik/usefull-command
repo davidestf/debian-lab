@@ -1,0 +1,2 @@
+#add IPv6
+ipv6 address add address=$IPV6::/64 interface=bridge eui-64=yes
