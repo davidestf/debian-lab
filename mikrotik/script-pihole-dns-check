@@ -1,0 +1,19 @@
+:local currentDNS [/ip dns get server]
+:local piholeDNS "192.168.88.3"
+:local backupDNS "1.1.1.1,1.1.1.2"
+:local testDomain "www.google.com"
+
+:if ($currentDNS = $piholeDNS) do={
+    :do {
+        :resolve $testDomain server $piholeDNS
+    } on-error={
+        /ip dns set servers=$backupDNS
+        /ip dhcp-server network set [find] dns-server=$backupDNS;
+    }
+} else={
+    :do {
+        :resolve $testDomain server $piholeDNS
+        /ip dns set servers=$piholeDNS
+        /ip dhcp-server network set [find] dns-server=$piholeDNS;
+    } on-error={}
+}
