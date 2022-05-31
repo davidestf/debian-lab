@@ -22,3 +22,8 @@ iface vmbr1 inet static
  post-up echo 1 > /proc/sys/net/ipv4/ip_forward
         post-up iptables -t nat -A POSTROUTING -s '192.168.10.100/24' -o vmbr0 -j MASQUERADE
         post-down iptables -t nat -D POSTROUTING -s '192.168.10.100/24' -o vmbr0 -j MASQUERADE
+
+
+
+post-up iptables -t nat -A PREROUTING -i vmbr0 -p tcp --dport 80 -j DNAT --to 10.0.0.100:80
+post-down iptables -t nat -D PREROUTING -i vmbr0 -p tcp --dport 80 -j DNAT --to 10.0.0.100:80
