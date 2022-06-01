@@ -1,5 +1,6 @@
-deb http://ftp.uk.debian.org/debian buster main contrib
-deb http://ftp.uk.debian.org/debian buster-updates main contrib
+deb http://ftp.uk.debian.org/debian bullseye main contrib
+deb http://ftp.uk.debian.org/debian bullseye-updates main contrib
 
 # security updates
-deb http://security.debian.org buster/updates main contrib
+deb http://security.debian.org bullseye-security main contrib
+
