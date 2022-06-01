@@ -12,6 +12,7 @@ END
 
 #update
 apt update && apt upgrade
+apt instll cloud-init
 
 #template polish
 truncate -s 0 /etc/machine-id 
