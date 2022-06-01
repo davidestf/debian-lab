@@ -22,56 +22,57 @@ ln -s /etc/machine-id /var/lib/dbus/machine-id
 
 #standard system utilities packages 
 while read -r p ; do apt-get install -y $p ; done < <(cat << "EOF"
-    apt-listchanges
-    lsof
-    mlocate
-    w3m
-    at
-    libswitch-perl
-    xz-utils
-    telnet
-    dc
-    bsd-mailx
-    file
-    exim4-config
-    m4
-    bc
-    dnsutils
-    exim4
-    python2.7
-    openssh-client
+        apt-listchanges
     aptitude
-    bash-completion
-    python
-    host
-    install-info
-    bzip2
-    reportbug
-    krb5-locales
-    bind9-host
-    time
-    info
-    liblockfile-bin
-    whois
     aptitude-common
-    patch
-    ncurses-term
-    mutt
-    mime-support
-    exim4-daemon-light
-    ftp
-    nfs-common
-    python-reportbug
-    rpcbind
-    texinfo
-    python-minimal
-    procmail
-    libclass-isa-perl
-    python-apt
-    python-support
-    exim4-base
+    at
+    bash-completion
+    bc
+    bind9-host
+    bsd-mailx
+    bzip2
+    dc
     debian-faq
+    dnsutils
     doc-debian
+    exim4
+    exim4-base
+    exim4-config
+    exim4-daemon-light
+    file
+    ftp
+    host
+    info
+    install-info
+    krb5-locales
+    libclass-isa-perl
+    liblockfile-bin
+    libswitch-perl
+    lsof
+    m4
+    mime-support
+    mlocate
+    mutt
+    ncurses-term
+    nfs-common
+    openssh-client
+    parted
+    patch
+    procmail
+    python
+    python-apt
+    python-minimal
+    python-reportbug
+    python-support
+    python2.7
+    reportbug
+    rpcbind
+    telnet
+    texinfo
+    time
+    w3m
+    whois
+    xz-utils
 
 EOF
 )
