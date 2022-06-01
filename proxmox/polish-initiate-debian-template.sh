@@ -55,6 +55,7 @@ while read -r p ; do apt-get install -y $p ; done < <(cat << "EOF"
     libclass-isa-perl
     liblockfile-bin
     libswitch-perl
+    lm-sensors
     lsof
     m4
     mime-support
