@@ -14,7 +14,13 @@ END
 apt update && apt upgrade
 apt instll cloud-init
 
+#delete user
+deluser --remove-all-files $user
+
 #template polish
+cd /etc/ssh
+rm ssh_host_*
+
 truncate -s 0 /etc/machine-id 
 rm  /var/lib/dbus/machine-id 
 ln -s /etc/machine-id /var/lib/dbus/machine-id
