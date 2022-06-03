@@ -1,0 +1,27 @@
+
+
+
+ll /dev/nvme*
+
+ 
+modprobe drivetemp
+sensors
+
+smartctl -a /dev/nvme0n1
+smartctl /dev/nvme0 -a | grep -i Temp
+
+
+hddtemp /dev/nvme0n1 --debug
+
+
+
+
+dmesg --level=err,warn
+
+
+lspci
+
+apt-get install nvme-cli
+nvme smart-log /dev/nvme0
+nvme error-log /dev/nvme0
+nvme error-log /dev/nvme0n1
