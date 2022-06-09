@@ -1,0 +1,1 @@
+find -name '*.1080p.AMZN.WEBRip.AAC.5.1.x265.10bit.HEVC-MONOLITH.mkv' | while read f; do mv "$f" "${f%A*}.mkv"; done
