@@ -37,6 +37,7 @@ while read -r p ; do apt-get install -y $p ; done < <(cat << "EOF"
     bc
     bind9-host
     bsd-mailx
+    build-essential 
     bzip2
     dc
     debian-faq
@@ -48,6 +49,7 @@ while read -r p ; do apt-get install -y $p ; done < <(cat << "EOF"
     exim4-daemon-light
     file
     ftp
+    git
     host
     info
     install-info
@@ -78,6 +80,7 @@ while read -r p ; do apt-get install -y $p ; done < <(cat << "EOF"
     telnet
     texinfo
     time
+    zsh
     w3m
     whois
     xz-utils
