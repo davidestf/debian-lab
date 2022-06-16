@@ -11,3 +11,9 @@ dmesg | grep -i kernel
 dmesg | grep -i fail
 
 dmesg -T | tail -20 | head -6
+
+journalctl -t sshd
+grep 'sshd' /var/log/auth.log
+
+
+grep -i -r 'out of memory' /var/log/
