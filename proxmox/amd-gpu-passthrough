@@ -1,0 +1,6 @@
+apt install firmware-linux firmware-linux-nonfree libdrm-amdgpu1 xserver-xorg-video-amdgpu
+
+
+lspci  -v -s  $(lspci | grep ' VGA ' | cut -d" " -f 1)
+lspci -nn | grep VGA
+dmesg | grep amdgpu
