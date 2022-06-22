@@ -1,6 +1,10 @@
 #network
 
+journalctl -b 0
 journalctl -u networking
+journalctl -t sshd
+journalctl -b | egrep "vfio|vendor|BAR|vgaarb|modeset"
+
 
 fsck /dev/vda1
 dmesg | grep -i vda
@@ -9,11 +13,12 @@ dmesg | more
 dmesg | grep -i error
 dmesg | grep -i kernel
 dmesg | grep -i fail
-
 dmesg -T | tail -20 | head -6
+dmesg | grep -i -E 'error|warn|failed'
 
-journalctl -t sshd
+
+tail -f /var/log/syslog
+tail -f /var/log/messag
+
 grep 'sshd' /var/log/auth.log
-
-
 grep -i -r 'out of memory' /var/log/
