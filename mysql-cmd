@@ -176,6 +176,9 @@ REVOKE role FROM 'user'@'localhost';
 
 SHOW DATABASES;
 select host, user, password from mysql.user;
+
+#port running :
+SHOW GLOBAL VARIABLES LIKE 'PORT';
  
 import to an existing database
 mysql -u [username] -h [host] -p [password] [database_name] < SQL file to import
