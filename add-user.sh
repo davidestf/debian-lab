@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 
 # sudo sh -c "$(curl -fsSLhttps://raw.githubusercontent.com/dstf/debian-lab/main/add-user.sh)"
