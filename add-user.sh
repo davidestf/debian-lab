@@ -6,7 +6,7 @@
 # Stop on any errors
 #set -e
 
-echo "Please enter the server's username that you want to add users to:"
+echo "Please enter the server's username "root" that you want to add users to:"
 read serveruser
 echo "Please enter the server's IP address that you want to add users to:"
 read address
