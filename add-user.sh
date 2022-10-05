@@ -4,7 +4,7 @@
 
 
 # Stop on any errors
-set -e
+#set -e
 
 echo "Please enter the server's username that you want to add users to:"
 read serveruser
