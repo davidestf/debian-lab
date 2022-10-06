@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/dstf/debian-lab/master/k8s-control.sh)"
+# sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/dstf/debian-lab/main/k8s-control.sh)"
 
 
 #set the variables 
