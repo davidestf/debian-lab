@@ -1,0 +1,4 @@
+/ip address add address=[ADDRESS] interface=ether1
+/ip route add gateway=[GATEWAY]
+/ip dns set servers=8.8.8.8,8.8.4.4
+/ip service disable telnet
