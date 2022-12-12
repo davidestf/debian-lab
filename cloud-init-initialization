@@ -1,0 +1,27 @@
+#cloud-config
+
+users:
+ - name: $user
+   sudo: ALL=(ALL) NOPASSWD:ALL
+   lock-passwd: false
+   ssh-authorized-keys:
+      - ssh-rsa 
+      
+packages:
+  - man
+  - whois
+  - vim
+  - pwgen
+  - telnet
+  - bind-utils
+  - git 
+  - gcc
+  - screen
+  - zip
+  - unzip
+
+runcmd:
+  - apt update && apt upgrade
+  - sed -i 's/#PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
+  - sed -i 's/#Port 22/Port __ssh-port__/g' /etc/ssh/sshd_config
+  - sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
