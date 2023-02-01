@@ -1,0 +1,7 @@
+lsblk
+
+ mkfs.ext4 /dev/
+ 
+ blkid
+ 
+ UUID= disk_uuid                        /disk1        ext4   defaults          1      2
