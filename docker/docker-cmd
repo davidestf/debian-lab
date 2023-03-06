@@ -30,11 +30,16 @@ docker volume rm $(docker volume ls -qf dangling=true)
 
 docker-compose down
 
+#Stop all containers
+docker stop  $(docker ps -a -q)
+
 #Delete all containers 
 docker rm -f $(docker ps -a -q)
 
 #Delete all volumes 
 docker volume rm $(docker volume ls -q)
+
+docker system prune -a
 
 #Restart the containers 
 docker-compose up -d
