@@ -50,6 +50,7 @@ while read -r p ; do apt-get install -y $p ; done < <(cat << "EOF"
     file
     ftp
     git
+    hdparm
     host
     info
     install-info
@@ -58,6 +59,7 @@ while read -r p ; do apt-get install -y $p ; done < <(cat << "EOF"
     liblockfile-bin
     libswitch-perl
     lm-sensors
+    lshw
     lsof
     m4
     mime-support
