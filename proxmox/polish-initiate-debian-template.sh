@@ -12,7 +12,7 @@ END
 
 #update
 apt update && apt upgrade
-apt instll cloud-init
+apt install cloud-init
 
 #delete user
 deluser --remove-all-files $user
