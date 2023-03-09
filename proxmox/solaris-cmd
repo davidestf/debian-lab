@@ -21,7 +21,7 @@ dladm show-phys -m
 
 
 ## Ipmitool tool 
-
+ipmitool lan print
 
 
 # svcs - List Service Infos
