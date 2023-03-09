@@ -1,8 +1,27 @@
-# Check CPU
+# show system info
+/bin/uname -X
+/usr/sbin/psrinfo -v
+
+
+# check CPU
 psrinfo -pv
+
+# check memory
+prtconf | grep Memory
  
-# Show installed NIcs:
+# show installed NIcs:
 dladm show-dev 
+
+
+# IP address
+ipadm show-if
+ipadm show-addr
+
+dladm show-phys -m
+
+
+## Ipmitool tool 
+
 
 
 # svcs - List Service Infos
