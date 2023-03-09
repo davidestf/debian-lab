@@ -1,0 +1,61 @@
+# Check CPU
+psrinfo -pv
+ 
+# Show installed NIcs:
+dladm show-dev 
+
+
+# svcs - List Service Infos
+
+svcs -a              # List all installed services and their current state
+svcs -d <service>    # List all dependencies of a service
+svcs -D <service>    # List who is depending on a service
+svcs -xv             # List why something is failed
+svcadm - Control Services
+
+svcadm enable <service>
+svcadm disable <service>
+svcadm refresh <service>    # like init reload
+svcadm restart <service>
+
+svcadm clear <service>      # Clear errors: try starting again...
+
+
+
+
+
+ # ZFS Cheat Sheet:
+
+# Analysis
+zpool list             # List pools
+zpool status -v        # Tree like summary of all disks
+zpool iostat 1         # iostat for all ZFS pools
+zpool history          # Show recent commands
+
+# Handling properties
+zfs get all z0
+zfs get all z0/data
+zfs set sharenfs=on z0/data
+zfs set sharesmb=on z0/data
+zfs set compression=on z0/data
+
+# Mounting 
+zfs mount               # List all ZFS mount points
+zfs set mountpoint=/export/data z0/data
+zfs mount /export/data
+zfs unmount /export/data
+
+# NFS Shares
+zfs set sharenfs=on z1/backup/mydata         # Enable as NFS share
+zfs get sharenfs z1/backup/mydata            # List share options
+zfs sharenfs="<options>" z1/backup/mydata    # Overwrite share options
+
+# Create and load snapshots
+zfs snapshot z0/data@backup-20120601
+zfs rollback z0/data@backup-20120601
+
+
+# create user
+useradd -d /export/home/your-name -s /usr/bin/bash -m your-name
+passwd your-name
+
