@@ -1,6 +1,16 @@
-$ docker ps  | grep mailu_front
-$ docker exec -it [container id here] /bin/bash 
-bash-5.0# certbot -n --agree-tos -d $HOSTNAMES -m $POSTMASTER@$DOMAIN certonly --standalone --cert-name mailu --preferred-challenges http --http-01-port 8008 --force-renewal --rsa-key-size 4096 --config-dir /certs/letsencrypt --post-hook /config.py
-$ CTRL-D
+docker ps  | grep mailu-front
+docker exec -it [container id here] /bin/bash 
+
+
+run the script :
+https://github.com/Mailu/Mailu/blob/master/core/nginx/letsencrypt.py
+
+
+###
+certbot -n --agree-tos -d $HOSTNAMES -m $POSTMASTER@$DOMAIN certonly --standalone --cert-name mailu --preferred-challenges http --http-01-port 8008 --force-renewal --rsa-key-size 4096 --config-dir /certs/letsencrypt --post-hook /config.py
+exit
+
 # if you use a proxy own nginx
-$ sudo service nginx restart
+sudo service nginx restart
+
+
