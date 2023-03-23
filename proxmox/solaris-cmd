@@ -23,6 +23,8 @@ dladm show-phys -m
 ## Ipmitool tool 
 ipmitool lan print
 
+#displays active fault diagnoses
+sudo fmadm list
 
 # svcs - List Service Infos
 
