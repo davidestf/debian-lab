@@ -42,6 +42,10 @@ svcadm restart <service>
 svcadm clear <service>      # Clear errors: try starting again...
 
 
+# Updating the System
+pkg publisher
+pkg list -u  #Checking for Package Updates
+pkg update
 
 
 
