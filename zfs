@@ -12,3 +12,11 @@ zpool create -f -o ashift=12 <pool> mirror <device1> <device2>
 
 #delete
 zpool destroy <pool_name>
+
+
+#snapshot
+zfs list -t snapshot
+zfs list
+zfs snapshot rpool/somedataset@test
+zfs rollback rpool/somedataset@test
+zfs destroy rpool/somedataset@test
