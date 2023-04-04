@@ -28,6 +28,9 @@ docker run -d -p 22 mysnapshot /usr/sbin/sshd -D
 #cleanup volumes
 docker volume rm $(docker volume ls -qf dangling=true)
 
+docker network ls
+docker network rm 
+
 docker-compose down
 
 #Stop all containers
