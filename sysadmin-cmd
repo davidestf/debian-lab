@@ -1,0 +1,11 @@
+
+
+
+##screen
+screen -S 
+screen -ls
+screen -r
+screen -x
+screen -X detach / Ctrl+a d
+screen -XS <session-id> quit / Ctrl+d
+script /dev/null   #Take ownership of the shell
