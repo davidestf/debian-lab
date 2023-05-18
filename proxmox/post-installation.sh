@@ -6,4 +6,29 @@ echo "deb http://download.proxmox.com/debian/pve buster pve-no-subscription" > /
 
 apt update && apt dist-upgrade -y && apt autoremove --purge -y
 
-apt install ifupdown2
+echo "Installing packages"
+while read -r p ; do sudo apt-get install -y $p ; done < <(cat << "EOF"
+
+apt-transport-https 
+ca-certificates 
+curl 
+software-properties-common
+
+hdparm
+ifupdown2
+lsscsi
+rsync
+sdparm
+smartmontools
+EOF
+)
+
+
+#packer & terraform
+curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/hashicorp.gpg
+apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+apt update && apt install packer terraform
+
+#ansible
+apt-add-repository ppa:ansible/ansible
+apt update && apt install ansible
