@@ -17,6 +17,7 @@ software-properties-common
 hdparm
 ifupdown2
 lsscsi
+net-tools
 rsync
 sdparm
 smartmontools
