@@ -6,3 +6,4 @@ apt install linux-headers-amd64;sudo apt install -t bullseye-backports zfsutils-
 
 
 
+# sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/dstf/debian-lab/main/zfs-install.sh)"
