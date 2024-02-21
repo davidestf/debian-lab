@@ -1,3 +1,6 @@
 
-#networking 
+# networking 
+sudo apt install iperf
+sudo apt install netperf
 sudo apt install flent
+
