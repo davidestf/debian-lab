@@ -14,13 +14,19 @@ ca-certificates
 curl 
 software-properties-common
 
+curl
 hdparm
 ifupdown2
+logrotate
+lsof
 lsscsi
 net-tools
 rsync
+screen
 sdparm
+sysstat
 smartmontools
+tcpdump
 EOF
 )
 
